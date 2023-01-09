@@ -1,6 +1,6 @@
 image:
-  repository: weaveworks/kured
-  tag: ""  # will default to the appVersion in Chart.yaml
+  repository: mrosse3/kured
+  tag: v0.1.0  # will default to the appVersion in Chart.yaml
   pullPolicy: IfNotPresent
   pullSecrets: []
 

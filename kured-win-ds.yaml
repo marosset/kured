@@ -37,7 +37,7 @@ spec:
       hostNetwork: true # Required for HostProcess containers on Windows
       initContainers:
         - name: kured-init
-          image: mrosse3/kured
+          image: mrosse3/kured:v0.1.0
           imagePullPolicy: IfNotPresent
           env:
             - name: KURED_NODE_ID
@@ -50,7 +50,7 @@ spec:
             - Kured-Init.ps1
       containers:
         - name: kured
-          image: mrosse3/kured
+          image: mrosse3/kured:v0.1.0
             # If you find yourself here wondering why there is no
             # :latest tag on Docker Hub,see the FAQ in the README
           imagePullPolicy: IfNotPresent

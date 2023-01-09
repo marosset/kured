@@ -25,14 +25,14 @@ build/.image.done: cmd/kured/*Dockerfile cmd/kured/kured* scripts/*
 	mkdir -p build
 	cp $^ build
 	REGISTRY=docker.io/$(DH_ORG) VERSION=$(VERSION) WINDOWS_OS_VERSIONS=$(WINDOWS_OS_VERSIONS) $(SUDO) ./build/build-multiarch.sh
-	REGISTRY=ghcr.io/$(DH_ORG) VERSION=$(VERSION) WINDOWS_OS_VERSIONS=$(WINDOWS_OS_VERSIONS) $(SUDO) ./build/build-multiarch.sh
+#	REGISTRY=ghcr.io/$(DH_ORG) VERSION=$(VERSION) WINDOWS_OS_VERSIONS=$(WINDOWS_OS_VERSIONS) $(SUDO) ./build/build-multiarch.sh
 	touch $@
 
 image: build/.image.done
 
 publish-image: image
 	$(SUDO) docker manifest push docker.io/$(DH_ORG)/kured:$(VERSION)
-	$(SUDO) docker manifest push ghcr.io/$(DH_ORG)/kured:$(VERSION)
+#	$(SUDO) docker manifest push ghcr.io/$(DH_ORG)/kured:$(VERSION)
 
 minikube-publish: image
 	$(SUDO) docker image pull docker.io/$(DH_ORG)/kured:$(VERSION)-linux
